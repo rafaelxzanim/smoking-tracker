@@ -16,9 +16,9 @@ export class MenuComponent implements OnInit{
   title:string = "Smoking Tracker";
 
   menuArray:Menu[] = [
-    { href : "/registro", description: "Novo Registro"},
-    { href : "/estatistica", description: "Estatísticas"},
-    { href : "/sobre", description: "Sobre"},
+    { href : "registro", description: "Novo Registro"},
+    { href : "estatistica", description: "Estatísticas"},
+    { href : "sobre", description: "Sobre"},
   ];
 
   ngOnInit(): void {
