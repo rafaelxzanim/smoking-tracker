@@ -27,6 +27,7 @@ export class RegisterComponent {
 
   save(): void {
     this.totalSmokedCigars = +this.totalSmokedCigars + +this.qtySmoked;
+    //TODO: save in the database
   }
 
   update(): void {}
