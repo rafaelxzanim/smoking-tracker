@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Registro } from './registro';
+import { LocalStorageService } from './local-storage-service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class FakeDatabase {
 
   constructor() {
     this.registers = [];
-    this.populatedDB();
+    //this.populatedDB();
   }
 
   public create(registro: Registro): void {
@@ -21,7 +22,7 @@ export class FakeDatabase {
     return reg;
   }
 
-  public getById(id: number): Registro {
+  public getById(id: string): Registro {
     let filteredRegister = this.all().filter((reg) => {
       return reg.id === id;
     });
@@ -34,11 +35,14 @@ export class FakeDatabase {
 
   delete(registro: Registro): void {}
 
-  populatedDB() {
-    for (let i = 1; i < 11; i++) {
-      let date = new Date();
-      date.setDate(date.getDate() + i);
-      this.create(new Registro(i, date, 1 * i, 15, 20, { type: 'CALMO' }));
-    }
-  }
+  // populatedDB() {
+  //   for (let i = 1; i < 3; i++) {
+  //     let date = new Date();
+  //     date.setDate(date.getDate() + i);
+  //     let registro = new Registro(new Date().toString(), 1 * i, 15, 20, { type: 'CALMO' });
+  //     this.create(registro);
+  //     let localStorage = new LocalStorageService();
+  //     localStorage.create(registro);
+  //   }
+  // }
 }

@@ -5,25 +5,27 @@ export interface TipoHumor {
 }
 
 export class Registro {
-  //private id: string = uuid();
-  public id: number;
-  public data: Date;
-  public totalConsumidos: number;
-  public precoPack: number;
-  public qtdePack: number;
-  public tipoHumor: TipoHumor | undefined;
+  public id: string = uuid();
+  //public id!: number;
+  public data!: string;
+  public totalConsumidos!: number;
+  public precoPack!: number;
+  public qtdePack!: number;
+  //@public tipoHumor: TipoHumor | undefined;
+  public tipoHumor: string;
 
   constructor(
-    id:number,
-    date: Date,
+    //id:number,
+    data: string,
     totalConsumidos: number,
     precoPack: number,
     qtdePack: number,
-    tipoHumor: TipoHumor | undefined
+    //@tipoHumor: TipoHumor | undefined
+    tipoHumor: string
   ) {
-    //this.id = uuid();
-    this.id = id;
-    this.data = date;
+    this.id = uuid();
+    //this.id = id;
+    this.data = data;
     this.totalConsumidos = totalConsumidos;
     this.precoPack = precoPack;
     this.qtdePack = qtdePack;

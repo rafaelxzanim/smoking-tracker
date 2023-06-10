@@ -6,3 +6,9 @@ span{
   cursor: pointer;
 }
 
+.alert{
+  padding-top: 10vh;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
