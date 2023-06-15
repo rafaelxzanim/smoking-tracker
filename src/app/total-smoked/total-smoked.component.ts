@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FakeDatabase } from '../fake-database';
-import { Registro } from '../registro';
 
 @Component({
   selector: 'app-total-smoked',

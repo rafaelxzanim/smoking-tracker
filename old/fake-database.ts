@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Registro } from './registro';
-import { LocalStorageService } from './local-storage-service';
+import { Registro } from '../src/app/models/registro';
 
 @Injectable({
   providedIn: 'root',

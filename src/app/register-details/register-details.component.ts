@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FakeDatabase } from '../fake-database';
-import { Registro, TipoHumor } from '../registro';
-import { LocalStorageService } from '../local-storage-service';
+import { LocalStorageService } from '../../../old/localstorage.service';
+import { Registro } from '../models/registro';
+import { RegisterPromiseService } from '../services/register-promise.service';
 
 @Component({
   selector: 'app-register-details',
@@ -12,15 +12,19 @@ import { LocalStorageService } from '../local-storage-service';
 export class RegisterDetailsComponent implements OnInit {
   registro!: Registro;
 
-  constructor(private route: ActivatedRoute, private db: LocalStorageService) {
-    //console.log('componente: register', db.all()[0].data);
-    console.log('componente: register', db.getData);
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private localStorage: LocalStorageService,
+    private api: RegisterPromiseService
+  ) {}
 
   ngOnInit(): void {
-    //let idParam: string = +this.route.snapshot.paramMap.get('id')!;
     let idParam: string = this.route.snapshot.paramMap.get('id')!;
-    this.registro = this.db.getById(idParam);
-    console.log(this.db.getById(idParam));
+    this.api.getByID(idParam).then((r: Registro) => {
+      this.registro = r;
+    });
+    //@LocalStorage
+    //this.registro = this.localStorage.getById(idParam);
+    //@LocalStorage
   }
 }

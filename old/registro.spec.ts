@@ -1,4 +1,4 @@
-import { Registro } from './registro';
+import { Registro } from '../src/app/models/registro';
 
 describe('Registro', () => {
   it('should create an instance', () => {

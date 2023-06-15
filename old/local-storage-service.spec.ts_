@@ -1,4 +1,4 @@
-import { LocalStorageService } from './local-storage-service';
+import { LocalStorageService } from './local-storage-service.ts_';
 
 describe('LocalStorageService', () => {
   it('should create an instance', () => {

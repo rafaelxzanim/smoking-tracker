@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FakeDatabase } from './fake-database';
+import { FakeDatabase } from '../../old/fake-database';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,6 @@ import { FakeDatabase } from './fake-database';
 export class AppComponent {
   title = 'smoking-tracker';
   ngOnInit():void{
-    console.log('Start App');
+    console.log('Start App 🚀');
   }
 }

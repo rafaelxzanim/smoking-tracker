@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TotalSmokedComponent } from './total-smoked.component';
+import { TotalSmokedComponent } from '../src/app/total-smoked/total-smoked.component';
 
 describe('TotalSmokedComponent', () => {
   let component: TotalSmokedComponent;

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FakeDatabase } from '../fake-database';
-import { Registro } from '../registro';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LocalStorageService } from '../local-storage-service';
+import { LocalStorageService } from '../../../old/localstorage.service';
+import { Registro } from '../models/registro';
+import { RegisterPromiseService } from '../services/register-promise.service';
 
 @Component({
   selector: 'app-register-list',
@@ -10,27 +10,37 @@ import { LocalStorageService } from '../local-storage-service';
   styleUrls: ['./register-list.component.css'],
 })
 export class RegisterListComponent implements OnInit {
-  registers: Registro[];
+  registers!: Registro[];
+  registerCounter: number = 0;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private db: FakeDatabase,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private api: RegisterPromiseService
   ) {
-    //console.log('componente: register', db.all()[0].data);
-
-    //this.registers = db.all();
-    //console.log(localStorage.getData());
-    this.registers = localStorage.getData();
-    console.log(this.registers.length);
+    //@LocalStorage
+    //this.registers = localStorage.getData();
+    //this.registerCounter = this.registers.length;
+    //@LocalStorage
+    this.getRegisters();
   }
 
   ngOnInit(): void {}
+
+  getRegisters(){
+    this.api.all().then((r: Registro[]) => {
+      this.registers = r;
+      this.registerCounter = r.length;
+    });
+  }
 
   onClickItem(registro: Registro): void {
     this.router.navigate(['/registro/detalhes', registro?.id]);
   }
 
-  onClickDelete(): void {}
+  onClickDelete(event: Event, registro: Registro): void {
+    event.preventDefault();
+    this.api.delete(registro);
+    this.getRegisters();
+  }
 }

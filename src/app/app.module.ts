@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { TotalSmokedComponent } from './total-smoked/total-smoked.component';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
 import { RegisterListComponent } from './register-list/register-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RegisterListComponent } from './register-list/register-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
