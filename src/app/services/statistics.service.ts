@@ -17,6 +17,7 @@ export class StatisticsService {
           (register: Registro) => register.totalConsumidos
         );
         let total = values.reduce((acc, value) => acc + value, 0);
+        const totalConsumidos = total;
         const mediaCigarros = total / registers.length;
 
         const minQtdCigarros = values.reduce(
@@ -42,6 +43,7 @@ export class StatisticsService {
           mediaGasta,
           mediaGastaMes: mediaGasta * 30,
           mediaGastAno: mediaGasta * 365,
+          totalConsumidos,
         };
 
         return statistics;
