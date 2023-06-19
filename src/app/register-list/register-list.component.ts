@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LocalStorageService } from '../../../old/localstorage.service';
+import { Router } from '@angular/router';
 import { Registro } from '../models/registro';
 import { RegisterPromiseService } from '../services/register-promise.service';
+import { Observable } from 'rxjs';
+import { ErrorUtil } from '../utils/error-util';
 
 @Component({
   selector: 'app-register-list',
@@ -12,25 +13,39 @@ import { RegisterPromiseService } from '../services/register-promise.service';
 export class RegisterListComponent implements OnInit {
   registers!: Registro[];
   registerCounter: number = 0;
+  registers$!: Observable<Registro[]>;
+  register$!: Observable<Object>;
 
-  constructor(
-    private router: Router,
-    private localStorage: LocalStorageService,
-    private api: RegisterPromiseService
-  ) {
-    //@LocalStorage
-    //this.registers = localStorage.getData();
-    //this.registerCounter = this.registers.length;
-    //@LocalStorage
+  constructor(private router: Router, private api: RegisterPromiseService) {}
+
+  ngOnInit(): void {
     this.getRegisters();
   }
 
-  ngOnInit(): void {}
+  getRegisters() {
+    this.registers$ = this.api.allObservable();
 
-  getRegisters(){
-    this.api.all().then((r: Registro[]) => {
-      this.registers = r;
-      this.registerCounter = r.length;
+    this.registers$.subscribe({
+      next: (r) => {
+        this.registers = r;
+        this.registerCounter = r.length;
+      },
+      error: (error) => {
+        alert(ErrorUtil.handleError(error));
+      },
+    });
+  }
+
+  deleteRegister(registro: Registro) {
+    this.register$ = this.api.deleteObservable(registro);
+
+    this.register$.subscribe({
+      next: (r) => {
+        alert('Registro Removido com Sucesso!');
+      },
+      error: (error) => {
+        alert(ErrorUtil.handleError(error));
+      },
     });
   }
 
@@ -40,7 +55,7 @@ export class RegisterListComponent implements OnInit {
 
   onClickDelete(event: Event, registro: Registro): void {
     event.preventDefault();
-    this.api.delete(registro);
+    this.deleteRegister(registro);
     this.getRegisters();
   }
 }

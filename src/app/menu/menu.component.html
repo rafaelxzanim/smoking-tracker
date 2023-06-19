@@ -1,22 +1,21 @@
-  <nav>
-    <div class="nav-wrapper">
-      <a routerLink="/" class="brand-logo">
-        <i class="material-icons left">smoke_free</i> {{this.title}}
-      </a>
-      <a routerLink="/" data-target="mobile-demo" class="sidenav-trigger">
-        <i class="material-icons">menu</i>
-      </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li *ngFor="let menu of this.menuArray">
-          <a [routerLink]="menu.href">{{menu.description}}</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo">
+      <i class="material-icons left">smoke_free</i> {{this.title}}
+    </a>
+    <a routerLink="/" data-target="mobile-demo" class="sidenav-trigger">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li *ngFor="let menu of this.menuArray">
+        <a [routerLink]="menu.href">{{menu.description}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li *ngFor="let menu of this.menuArray">
-      <a [routerLink]="menu.href">{{menu.description}}</a>
-    </li>
-  </ul>
-
+<ul class="sidenav" id="mobile-demo">
+  <li *ngFor="let menu of this.menuArray">
+    <a [routerLink]="menu.href">{{menu.description}}</a>
+  </li>
+</ul>

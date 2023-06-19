@@ -10,9 +10,14 @@ body {
 
 main {
   flex: 1 0 auto;
-  padding-top: 5vh;
+  padding-top: 1vh;
 }
 
 .bold-text {
+  font-weight: bold;
+}
+
+.bread-custom {
+  margin-left: 5vh;
   font-weight: bold;
 }

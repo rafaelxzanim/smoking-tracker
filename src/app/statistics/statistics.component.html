@@ -1,1 +1,30 @@
-<p>statistics works!</p>
+<p class="bread-custom">Você está em: Estatísticas</p>
+
+<div class="container" *ngIf="statistics">
+
+  <div class="row alert" [ngStyle]="{ 'display': statistics.maxQtdCigarros == undefined ? 'block' : 'none' }">
+    <div class="col s12">
+      <div>Nenhum registro encontrado!</div>
+    </div>
+  </div>
+
+  <div class="row" [ngStyle]="{ 'display': statistics.maxQtdCigarros == undefined  ? 'none' : 'block' }">
+    <div class="col s12">
+      <ul class="collection with-header">
+        <li class="collection-header">
+          <h4>Sobre seus registros</h4>
+        </li>
+        <li class="collection-item">Média de cigarros consumidos: {{this.statistics.mediaCigarros | number}}</li>
+        <li class="collection-item">Maior quantidade de cigarros consumidos: {{this.statistics.maxQtdCigarros | number}}
+        </li>
+        <li class="collection-item">Menor quantidade de cigarros consumidos: {{this.statistics.minQtdCigarros | number}}
+        </li>
+        <li class="collection-item">Média gasta: {{this.statistics.mediaGasta | currency:"BRL"}}</li>
+        <li class="collection-item">Se você parar de fumar você pode economizar em um mês:
+          {{this.statistics.mediaGastaMes | currency:"BRL"}}</li>
+        <li class="collection-item">Se você parar de fumar você pode economizar em um ano:
+          {{this.statistics.mediaGastAno | currency:"BRL"}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

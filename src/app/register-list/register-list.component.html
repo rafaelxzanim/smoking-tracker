@@ -1,22 +1,25 @@
+<p class="bread-custom">Você está em: Listagem Geral</p>
+
 <div class="container">
 
-  <div class="row alert" [ngStyle]="{ 'display': registerCounter === 0 ? 'block' : 'none' }">
+  <div class="row" *ngIf="registerCounter === 0">
     <div class="col s12">
-      <div *ngIf="registerCounter === 0">Nenhum registro encontrado!</div>
+      <div>Nenhum registro encontrado!</div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="registerCounter > 0">
     <div class="col s12">
-      <ul *ngIf="registerCounter > 0" class="collection with-header">
+      <ul class="collection with-header">
         <li class="collection-header center-align">
           <h4>Listagem geral dos registros de consumo de cigarro</h4>
         </li>
         <li class="collection-item" *ngFor="let register of this.registers">
           <div>
             <!-- <span (click)="onClickItem(register)"> Data: {{ register.data | date:'dd/MM/yyyy': 'pt-BR'  }} </span> -->
-            <span (click)="onClickItem(register)"> Data: {{ register.data }} </span>
-            <a href (click)="onClickDelete($event, register)" class="secondary-content"><i class="material-icons">delete</i></a>
+            <span (click)="onClickItem(register)"> <strong>ID:</strong> {{ register.id }} | Data: {{ register.data }} | Total Consumidos: {{ register.totalConsumidos }} | Humor: {{ register.tipoHumor }}</span>
+            <a href (click)="onClickDelete($event, register)" class="secondary-content"><i
+                class="material-icons">delete</i></a>
           </div>
 
         </li>

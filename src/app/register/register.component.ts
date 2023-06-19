@@ -8,11 +8,12 @@ import {
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import * as M from 'materialize-css';
-import { FakeDatabase } from '../../../old/fake-database';
 
 import { LocalStorageService } from '../../../old/localstorage.service';
 import { Registro } from '../models/registro';
 import { RegisterPromiseService } from '../services/register-promise.service';
+import { ErrorUtil } from '../utils/error-util';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('form') form!: NgForm;
 
   registro!: Registro;
+  register$!: Observable<Registro>;
 
   qtySmoked: number = 0;
   totalSmokedCigars: number = 0;
@@ -37,12 +39,6 @@ export class RegisterComponent implements OnInit {
         return sum + +registro.totalConsumidos;
       }, 0);
     });
-
-    //@LocalStorage
-    // this.totalSmokedCigars = localStorage.getData().reduce((sum, registro) => {
-    //   return sum + +registro.totalConsumidos;
-    // }, 0);
-    //@LocalStorage
   }
 
   ngOnInit(): void {
@@ -54,15 +50,19 @@ export class RegisterComponent implements OnInit {
   ngAfterViewInit(): void {}
 
   save(): void {
-    this.totalSmokedCigars = this.totalSmokedCigars + this.registro.totalConsumidos;
-    //@LocalStorage
-    // this.localStorage.create(this.registro);
-    // alert('Registro Inserido com Sucesso!');
-    //@LocalStorage
+    this.totalSmokedCigars =
+      this.totalSmokedCigars + this.registro.totalConsumidos;
 
-    this.api.save(this.registro).then( (r:Registro)=>{
-      alert('Registro Inserido com Sucesso!');
-    })
+    this.register$ = this.api.saveObservable(this.registro);
+
+    this.register$.subscribe({
+      next: (r) => {
+        alert('Registro Inserido com Sucesso!');
+      },
+      error: (error) => {
+        alert(ErrorUtil.handleError(error));
+      },
+    });
 
     this.form.reset();
     this.setEmptyRegister();
@@ -70,9 +70,7 @@ export class RegisterComponent implements OnInit {
 
   update(): void {}
 
-  enviarFormulario(): void {
-    console.log('click', this.registro);
-  }
+  enviarFormulario(): void {}
 
   setEmptyRegister() {
     this.registro = new Registro('', 0, 0, 0, 'CALMO');

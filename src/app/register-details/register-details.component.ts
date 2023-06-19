@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LocalStorageService } from '../../../old/localstorage.service';
 import { Registro } from '../models/registro';
 import { RegisterPromiseService } from '../services/register-promise.service';
+import { Observable } from 'rxjs';
+import { ErrorUtil } from '../utils/error-util';
 
 @Component({
   selector: 'app-register-details',
@@ -10,21 +11,29 @@ import { RegisterPromiseService } from '../services/register-promise.service';
   styleUrls: ['./register-details.component.css'],
 })
 export class RegisterDetailsComponent implements OnInit {
-  registro!: Registro;
+  register!: Registro;
+  register$!: Observable<Registro>;
 
   constructor(
     private route: ActivatedRoute,
-    private localStorage: LocalStorageService,
     private api: RegisterPromiseService
   ) {}
 
   ngOnInit(): void {
     let idParam: string = this.route.snapshot.paramMap.get('id')!;
-    this.api.getByID(idParam).then((r: Registro) => {
-      this.registro = r;
+    this.getRegister(idParam);
+  }
+
+  getRegister(id: string) {
+    this.register$ = this.api.getByIDObservable(id);
+
+    this.register$.subscribe({
+      next: (r) => {
+        this.register = r;
+      },
+      error: (error) => {
+        alert(ErrorUtil.handleError(error));
+      },
     });
-    //@LocalStorage
-    //this.registro = this.localStorage.getById(idParam);
-    //@LocalStorage
   }
 }

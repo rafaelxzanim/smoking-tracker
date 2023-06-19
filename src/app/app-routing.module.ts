@@ -8,6 +8,7 @@ import { RegisterDetailsComponent } from './register-details/register-details.co
 
 const routes: Routes = [
   {path: "", component: RegisterListComponent},
+  {path: "registro/listagem", component: RegisterListComponent},
   {path: "registro", component: RegisterComponent},
   {path: 'registro/detalhes/:id', component: RegisterDetailsComponent },
   {path: "estatistica", component: StatisticsComponent},

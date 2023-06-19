@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { Registro } from '../models/registro';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
   private storageKey = 'registros';
 
-  constructor() { }
+  constructor() {}
 
   getData(): Registro[] {
     const data = localStorage.getItem(this.storageKey);
-    return data ? JSON.parse(data) as Registro[] : [];
+    return data ? (JSON.parse(data) as Registro[]) : [];
   }
 
   setData(data: Registro[]): void {
@@ -26,7 +26,7 @@ export class LocalStorageService {
 
   getById(index: string): Registro {
     const data = this.getData();
-    let registroFiltered = data.filter(registro => registro.id === index);
+    let registroFiltered = data.filter((registro) => registro.id === index);
     return registroFiltered[0] ?? [];
   }
 
