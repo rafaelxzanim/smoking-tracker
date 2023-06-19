@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href=/smoking-tracker/",
+    "build": "ng build --configuration=production --base-href=/smoking-tracker/",
     "ghpages": "angular-cli-ghpages --dir=dist/smoking-tracker",
     "deploy": "npm run build & npm run ghpages",
     "watch": "ng build --watch --configuration development",
