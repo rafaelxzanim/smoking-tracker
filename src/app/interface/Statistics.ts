@@ -6,4 +6,5 @@ export interface Statistics {
   mediaGastaMes: number;
   mediaGastAno: number;
   totalConsumidos: number;
+  totalGasto: number;
 }

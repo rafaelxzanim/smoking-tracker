@@ -1,1 +1,0 @@
-DELETE  http://localhost:3000/registros/6de77c59-dd57-401c-bb63-c0b3487480f7

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FakeDatabase } from '../../old/fake-database';
 
 @Component({
   selector: 'app-root',

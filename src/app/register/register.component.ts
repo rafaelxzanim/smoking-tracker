@@ -8,12 +8,11 @@ import {
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import * as M from 'materialize-css';
-
-import { LocalStorageService } from '../../../old/localstorage.service';
 import { Registro } from '../models/registro';
 import { RegisterPromiseService } from '../services/register-promise.service';
 import { ErrorUtil } from '../utils/error-util';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -73,6 +72,6 @@ export class RegisterComponent implements OnInit {
   enviarFormulario(): void {}
 
   setEmptyRegister() {
-    this.registro = new Registro('', 0, 0, 0, 'CALMO');
+    this.registro = new Registro();
   }
 }

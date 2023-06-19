@@ -42,6 +42,7 @@ export class RegisterListComponent implements OnInit {
     this.register$.subscribe({
       next: (r) => {
         alert('Registro Removido com Sucesso!');
+        this.getRegisters();
       },
       error: (error) => {
         alert(ErrorUtil.handleError(error));
@@ -56,6 +57,6 @@ export class RegisterListComponent implements OnInit {
   onClickDelete(event: Event, registro: Registro): void {
     event.preventDefault();
     this.deleteRegister(registro);
-    this.getRegisters();
+
   }
 }

@@ -10,20 +10,22 @@ export class Registro {
   public totalConsumidos!: number;
   public precoPack!: number;
   public qtdePack!: number;
-  public tipoHumor: string;
+  public tipoHumor!: string;
 
-  constructor(
-    data: string,
-    totalConsumidos: number,
-    precoPack: number,
-    qtdePack: number,
-    tipoHumor: string
-  ) {
-    this.id = uuid();
-    this.data = data;
-    this.totalConsumidos = totalConsumidos;
-    this.precoPack = precoPack;
-    this.qtdePack = qtdePack;
-    this.tipoHumor = tipoHumor;
-  }
+  // constructor(
+  //   data: string,
+  //   totalConsumidos: number,
+  //   precoPack: number,
+  //   qtdePack: number,
+  //   tipoHumor: string
+  // ) {
+  //   this.id = uuid();
+  //   this.data = data;
+  //   this.totalConsumidos = totalConsumidos;
+  //   this.precoPack = precoPack;
+  //   this.qtdePack = qtdePack;
+  //   this.tipoHumor = tipoHumor;
+  // }
+  
+  constructor() {}
 }

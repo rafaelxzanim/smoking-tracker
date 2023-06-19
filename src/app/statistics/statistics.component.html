@@ -15,12 +15,13 @@
           <h4>Sobre seus registros</h4>
         </li>
         <li class="collection-item">Total cigarros consumidos: {{this.statistics.totalConsumidos | number}}</li>
+        <li class="collection-item">Total gasto: {{this.statistics.totalGasto | currency:"BRL"}}</li>
         <li class="collection-item">Média de cigarros consumidos: {{this.statistics.mediaCigarros | number}}</li>
-        <li class="collection-item">Maior quantidade de cigarros consumidos: {{this.statistics.maxQtdCigarros | number}}
+        <li class="collection-item">Maior quantidade de cigarros consumidos em um registro: {{this.statistics.maxQtdCigarros | number}}
         </li>
-        <li class="collection-item">Menor quantidade de cigarros consumidos: {{this.statistics.minQtdCigarros | number}}
+        <li class="collection-item">Menor quantidade de cigarros consumidos em um registro: {{this.statistics.minQtdCigarros | number}}
         </li>
-        <li class="collection-item">Média gasta: {{this.statistics.mediaGasta | currency:"BRL"}}</li>
+        <li class="collection-item">Média gasta por registro: {{this.statistics.mediaGasta | currency:"BRL"}}</li>
         <li class="collection-item">Se você parar de fumar você pode economizar em um mês:
           {{this.statistics.mediaGastaMes | currency:"BRL"}}</li>
         <li class="collection-item">Se você parar de fumar você pode economizar em um ano:

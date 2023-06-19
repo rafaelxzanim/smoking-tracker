@@ -31,10 +31,15 @@ export class StatisticsService {
         );
 
         values = registers.map(
-          (register: Registro) => register.precoPack / register.qtdePack
+          (register: Registro) => (register.precoPack / register.qtdePack)* register.totalConsumidos
         );
         total = values.reduce((acc, value) => acc + value, 0);
         const mediaGasta = total / registers.length;
+
+        values = registers.map(
+          (register: Registro) => (register.precoPack / register.qtdePack)* register.totalConsumidos
+        );
+        const totalGasto = values.reduce((acc, value) => acc + value, 0);
 
         let statistics: Statistics = {
           mediaCigarros,
@@ -44,6 +49,7 @@ export class StatisticsService {
           mediaGastaMes: mediaGasta * 30,
           mediaGastAno: mediaGasta * 365,
           totalConsumidos,
+          totalGasto
         };
 
         return statistics;
