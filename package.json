@@ -4,10 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href=/smoking-tracker/",
+    "ghpages": "angular-cli-ghpages --dir=dist/smoking-tracker",
+    "deploy": "npm run build & npm run ghpages",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "db": "json-server --watch db.json"
+    "db": "json-server --watch db.json",
+    "json:server": "json-server --watch db.json"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +24,7 @@
     "@angular/router": "^16.0.0",
     "@types/materialize-css": "^1.0.11",
     "@types/uuid": "^9.0.1",
+    "angular-cli-ghpages": "^1.0.6",
     "json-server": "^0.17.3",
     "material-icons": "^1.13.7",
     "materialize-css": "^1.0.0",
