@@ -1,0 +1,14 @@
+li:hover {
+  background-color: #f5f5f5;
+}
+
+span {
+  cursor: pointer;
+}
+
+.alert {
+  padding-top: 10vh;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}

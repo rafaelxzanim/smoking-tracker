@@ -1,0 +1,103 @@
+<p class="bread-custom">Você está em: Novo Registro</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+      <app-total-smoked [totalSmoked]="totalSmokedCigars"></app-total-smoked>
+
+      <form #form="ngForm" (ngSubmit)="enviarFormulario()">
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="data" type="text" class="validate" required [(ngModel)]="this.registro.data" name="data"
+              pattern="\d{1,2}/\d{1,2}/\d{4}" #data="ngModel">
+            <label for="data">Data de consumo do cigarro*:</label>
+            <span *ngIf="data.invalid && (data.dirty || data.touched)" class="helper-text red-text">
+              <span *ngIf="data.errors?.['required']">Data de consumo do cigarro é obrigatório.</span>
+              <span *ngIf="data.errors?.['pattern']">Data no formato dd/mm/aaaa.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="cigars" type="number" class="validate" required [(ngModel)]="this.registro.totalConsumidos"
+              name="cigars" #cigars="ngModel" pattern="[0-9]+" min="1">
+            <label for="cigars">Quantidade total de cigarros consumidos no dia*:</label>
+            <span *ngIf="cigars.invalid && (cigars.dirty || cigars.touched)" class="helper-text red-text">
+              <span *ngIf="cigars.errors?.['required']">Quantidade total de cigarros consumidos no dia é
+                obrigatório.</span>
+              <span *ngIf="cigars.errors?.['pattern']">Apenas números são permitidos maiores que 0.</span>
+              <span *ngIf="cigars.errors?.['min']">Apenas números são permitidos maiores que 0.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="price" type="number" class="validate" required [(ngModel)]="this.registro.precoPack" name="price"
+              #price="ngModel" pattern="[0-9]+([.,][0-9]+)?" min="1">
+            <label for="price">Preço do pack*:</label>
+            <span *ngIf="price.invalid && (price.dirty || price.touched)" class="helper-text red-text">
+              <span *ngIf="price.errors?.['required']">Preço do pack é obrigatório.</span>
+              <span *ngIf="price.errors?.['pattern']">Apenas números são permitidos maiores que 0.</span>
+              <span *ngIf="price.errors?.['min']">Apenas números são permitidos maiores que 0.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="pack" type="number" class="validate" required [(ngModel)]="this.registro.qtdePack" name="pack"
+              #pack="ngModel" pattern="[0-9]+([.,][0-9]+)?" min="1">
+            <label for="pack">Quantidade de cigarros pack*:</label>
+            <span *ngIf="pack.invalid && (pack.dirty || pack.touched)" class="helper-text red-text">
+              <span *ngIf="pack.errors?.['required']">Quantidade de cigarros pack é obrigatória.</span>
+              <span *ngIf="pack.errors?.['pattern']">Apenas números são permitidos maiores que 0.</span>
+              <span *ngIf="pack.errors?.['min']">Apenas números são permitidos maiores que 0.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <h5 class="helper-text">Seu humor no dia:*</h5>
+            <p>
+              <label>
+                <input name="mood" type="radio" value="CALMO" [checked]="this.registro.tipoHumor === 'CALMO'"
+                  [(ngModel)]="this.registro.tipoHumor" required />
+                <span>Calmo</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input name="mood" type="radio" value="NORMAL" [checked]="this.registro.tipoHumor === 'NORMAL'"
+                  [(ngModel)]="this.registro.tipoHumor" />
+                <span>Normal</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input name="mood" type="radio" value="IRRITADO" [checked]="this.registro.tipoHumor === 'IRRITADO'"
+                  [(ngModel)]="this.registro.tipoHumor" />
+                <span>Irritado</span>
+              </label>
+
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <button class="btn waves-effect waves-light" [disabled]="form.invalid" type="submit" name="action"
+              (click)="this.save()">Gravar
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

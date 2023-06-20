@@ -1,0 +1,36 @@
+{
+  "registros": [
+    {
+      "id": "3d1ac39e-cd6b-463e-a920-c1a6580e41ea",
+      "data": "01/03/2023",
+      "totalConsumidos": 1,
+      "precoPack": 8,
+      "qtdePack": 5,
+      "tipoHumor": "IRRITADO"
+    },
+    {
+      "id": "9ada60fd-45a0-4837-b747-9df3684ae1cf",
+      "data": "11/03/1983",
+      "totalConsumidos": 10,
+      "precoPack": 10,
+      "qtdePack": 20,
+      "tipoHumor": "CALMO"
+    },
+    {
+      "id": "c0d4f128-fed4-41a3-8cd3-8e0a80bbb0fc",
+      "data": "13/03/2023",
+      "totalConsumidos": 12,
+      "precoPack": 12,
+      "qtdePack": 20,
+      "tipoHumor": "NORMAL"
+    },
+    {
+      "id": "1a6867ab-42c0-48ef-af15-17a16ec41de5",
+      "data": "12/03/1983",
+      "totalConsumidos": 10,
+      "precoPack": 10,
+      "qtdePack": 20,
+      "tipoHumor": "CALMO"
+    }
+  ]
+}
