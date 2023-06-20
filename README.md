@@ -5,8 +5,13 @@ Este projeto tem como objetivo implementar progressivamente e de forma didática
 O frontend da aplicação foi desenvolvido com Angular e o backend foi simulado pela implementação de uma API Fake, usando o JSON Server.
 
 ## Endereço de Deploy - GitHub Pages
+https://rafaelxzanim.github.io/smoking-tracker/
 
+## Endereço do Repositório do GitHub
 https://github.com/rafaelxzanim/smoking-tracker
+
+## Endereço Vídeo Youtube Explicando o Projeto
+https://www.youtube.com/watch?v=e1T0RSP8N54
 
 ## Protótipo
 
